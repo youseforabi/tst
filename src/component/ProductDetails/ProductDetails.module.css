@@ -1,6 +1,3 @@
-*{
-    overflow: visible !important;
-}
 .productDetailsContainer {
     display: flex;
     flex-direction: row; /* Stack vertically on smaller screens */
