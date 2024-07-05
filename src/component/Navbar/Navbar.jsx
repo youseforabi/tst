@@ -31,8 +31,8 @@ export default function Navbar() {
             </ul>
 
             <div className={Styles.icon}>
-              <i className="fa-solid fa-cart-shopping text-white px-3"></i>
-              <i className="fa-regular fa-heart text-white px-3"></i>
+              <Link to={'/cart'} className="text-decoration-none fa-solid fa-cart-shopping text-white px-3"></Link>
+              <Link to={'/wishlist'} className="text-decoration-none fa-regular fa-heart text-white px-3"></Link>
               <Link to="/login">
                 <i className="fa-regular fa-user text-white ps-3 pe-5"></i>
               </Link>
