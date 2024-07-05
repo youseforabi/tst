@@ -1,6 +1,10 @@
 *{
   overflow: hidden !important; 
 }
+body{
+  overflow: hidden auto !important;
+  max-width: 100vw;
+}
    .back {
     width: 100%;
     height: 100vh;

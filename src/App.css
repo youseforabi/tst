@@ -19,7 +19,6 @@
 
 } */
 *{
-    overflow-x: hidden;
 }
 body{
     overflow: hidden auto !important;
