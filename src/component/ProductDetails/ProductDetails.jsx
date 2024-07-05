@@ -104,7 +104,7 @@ const ProductDetails = () => {
                 {deviceType === 'Desktop' ? renderImagesAsList() : renderImagesAsSlider()}
             </div>
             <div className={styles.detailsContainer}>
-                <div className='d-flex justify-content-between align-items-center mb-5'>
+                <div className='d-flex justify-content-between align-items-center mt-3 mb-4'>
                     <h1>{product.title.split(' ').slice(0, 3).join(' ')}</h1>
                     <p>${product.price}</p>
                 </div>
