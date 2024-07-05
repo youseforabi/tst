@@ -96,7 +96,7 @@ const ProductDetails = () => {
     }
 
     return (
-        <div className={styles.productDetailsContainer}>
+        <div className={`${styles.productDetailsContainer}`}>
             <div className={styles.imagesContainer}>
                 {/* Heart icon */}
                 <Link to={'/wishlist'} className="fa-regular fa-heart fs-3 text-decoration-none text-black"></Link>

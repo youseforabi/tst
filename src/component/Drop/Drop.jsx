@@ -242,7 +242,7 @@ export default function Drop() {
         <div className="my-5 mx-3">
 
             {/* Results count and view options */}
-            <div className="mt-5 d-flex justify-content-between align-items-center">
+            <div className="mt-5 d-flex justify-content-between align-items-center pt-4">
                 <p>{products.length} results</p>
                 <div className="d-flex justify-content-center align-items-center pb-2">
 
