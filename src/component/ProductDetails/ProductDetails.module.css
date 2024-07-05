@@ -1,5 +1,5 @@
 *{
-    overflow: visible !important;
+    overflow: visible;
 }
 .productDetailsContainer {
     display: flex;
