@@ -232,6 +232,7 @@ export default function Home() {
   };
 
   const responsive = {
+    
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
       items: 7
@@ -256,7 +257,7 @@ export default function Home() {
         <div className={styles.layer}></div>
       </div>
 
-      <Carousel autoPlay={500} infinite={true} arrows={false} responsive={responsive}>
+      <Carousel autoPlay={500} infinite={true} arrows={false} responsive={responsive} >
         {[...Array(7)].map((_, index) => (
           <div className={`${styles.border} ${styles.imageContainer}`} key={index}>
             <img className="w-100" src={images[activeIndexes[index]]} alt="Fashion Item" />

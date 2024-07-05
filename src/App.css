@@ -21,3 +21,7 @@
 *{
     overflow-x: hidden;
 }
+body{
+    overflow: hidden auto !important;
+    max-width: 100vw;
+}
