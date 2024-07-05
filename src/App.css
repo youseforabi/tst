@@ -1,0 +1,23 @@
+/* .back{
+    height: 100vh;
+    background-image: url('../src/assets/images/ac2c0abfc3631949cab9dca01b5aafc4.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.layer{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(24, 24, 24,0.6);
+
+} */
+*{
+    overflow-x: hidden;
+}

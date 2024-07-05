@@ -1,0 +1,88 @@
+.productDetailsContainer {
+    display: flex;
+    flex-direction: row; /* Stack vertically on smaller screens */
+    gap: 20px; /* Space between the images and details */
+    padding: 20px;
+    margin-top: 60px; /* Adjust this value based on your navbar height */
+}
+
+.imagesContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column; /* Display images in a column */
+    gap: 10px; /* Adjust as needed for space between images */
+}
+
+.productImage {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    border-right: 2px solid black; /* Border on the right */
+    border-bottom: 2px solid black; /* Border on the bottom */
+    padding: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 0; /* Remove bottom margin */
+}
+
+.detailsContainer {
+    padding: 10px;
+    flex: 2;
+}
+
+.detailsContainer h1 {
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+select {
+    width: 100%;
+    padding: 15px 10px;
+}
+
+.buyBtn, .addBtn {
+    width: 100%; /* Make buttons 100% width */
+    padding: 15px;
+    transition: all 1s;
+    text-decoration: none;
+    text-align: center;
+}
+
+.buyBtn {
+    margin-bottom: 10px;
+    background-color: black !important;
+    color: white;
+}
+
+.buyBtn:hover {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid black !important;
+}
+
+.addBtn {
+    background-color: white !important;
+    color: black;
+}
+
+.addBtn:hover {
+    background-color: black !important;
+    color: white !important;
+    border: 2px solid black !important;
+}
+
+.btnProductDetails {
+    border-left: 0 !important;
+    border-right: 0 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .productDetailsContainer {
+        height: auto;
+        flex-direction: column; /* Arrange side by side on larger screens */
+    }
+
+    .imagesContainer {
+        width: 100%;
+        margin: auto;
+    }
+}
