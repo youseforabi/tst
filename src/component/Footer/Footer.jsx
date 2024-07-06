@@ -55,7 +55,7 @@ export default function Footer() {
             <div className="col-md-1 border border-1 border-black"></div>
 
                 {/* NEWSLETTER */}
-                <div className="col-md-2 border border-1 border-black pb-2 pt-3">
+                <div className="col-md-2 border border-1 border-black pb-2 pt-3 ps-2">
                     <h3
                         className={`d-flex justify-content-between ${deviceType === 'Mobile' ? 'cursor-pointer' : ''}`}
                         onClick={() => handleToggleMobileDetails('newsletter')}
@@ -69,7 +69,7 @@ export default function Footer() {
                 </div>
 
                 {/* CLIENT SERVICES */}
-                <div className="col-md-2 border border-1 border-black pb-2 pt-3">
+                <div className="col-md-2 border border-1 border-black pb-2 pt-3 ps-2">
                     <h3
                         className={`d-flex justify-content-between ${deviceType === 'Mobile' ? 'cursor-pointer' : ''}`}
                         onClick={() => handleToggleMobileDetails('clientServices')}
@@ -87,7 +87,7 @@ export default function Footer() {
                 </div>
 
                 {/* THE COMPANY */}
-                <div className="col-md-2 border border-1 border-black pb-2 pt-3">
+                <div className="col-md-2 border border-1 border-black pb-2 pt-3 ps-2">
                     <h3
                         className={`d-flex justify-content-between   ${deviceType === 'Mobile' ? 'cursor-pointer' : ''}`}
                         onClick={() => handleToggleMobileDetails('company')}
@@ -101,7 +101,7 @@ export default function Footer() {
                 </div>
 
                 {/* FOLLOW US */}
-                <div className="col-md-2 border border-1 border-black pb-2 pt-3">
+                <div className="col-md-2 border border-1 border-black pb-2 pt-3 ps-2">
                     <h3
                         className={`d-flex justify-content-between ${deviceType === 'Mobile' ? 'cursor-pointer' : ''}`}
                         onClick={() => handleToggleMobileDetails('followUs')}
@@ -120,7 +120,7 @@ export default function Footer() {
                 </div>
 
                 {/* CONTACT US */}
-                <div className="col-md-2 border border-1 border-black pb-2 pt-3">
+                <div className="col-md-2 border border-1 border-black pb-2 pt-3 ps-2">
                     <h3
                         className={`d-flex justify-content-between ${deviceType === 'Mobile' ? 'cursor-pointer' : ''}`}
                         onClick={() => handleToggleMobileDetails('contactUs')}
