@@ -11,6 +11,7 @@ const ProductDetails = () => {
     const [selectedColor, setSelectedColor] = useState('');
     const [selectedQuantity, setSelectedQuantity] = useState(1);
     const [showDetails, setShowDetails] = useState(false); // Toggle state for showing details
+    const [size, setsize] = useState(false); // Toggle state for showing details
     const [deviceType, setDeviceType] = useState('Desktop');
 
     useEffect(() => {
@@ -90,6 +91,9 @@ const ProductDetails = () => {
     const toggleDetails = () => {
         setShowDetails(!showDetails);
     };
+    const toggleSize = () => {
+        setsize(!size);
+    };
 
     if (!product) {
         return <div>Loading...</div>;
@@ -104,29 +108,34 @@ const ProductDetails = () => {
                 {deviceType === 'Desktop' ? renderImagesAsList() : renderImagesAsSlider()}
             </div>
             <div className={styles.detailsContainer}>
-                <div className='d-flex justify-content-between align-items-center mt-3 mb-4'>
-                    <h1>{product.title.split(' ').slice(0, 3).join(' ')}</h1>
+                <div className={`${styles.detail} d-flex justify-content-between align-items-center mt-3 mb-4`}>
+                    <h1 className='pt-4'>{product.title.split(' ').slice(0, 3).join(' ')}</h1>
                     <p>${product.price}</p>
+
+                </div>
+                <div className={styles.detailsContainer1}>
+                    <p>{product.description}</p>
+
                 </div>
                 <div className="my-3 selectContainer">
-                    <select id="sizeSelect" value={selectedSize} onChange={handleSizeChange}>
-                        <option value="">Select Size</option>
+                    <select id="sizeSelect" className='' value={selectedSize} onChange={handleSizeChange}>
+                        <option value=""  className={styles.selection}>Select Size</option>
                         <option>S</option>
                         <option>M</option>
                         <option>L</option>
                     </select>
                 </div>
                 <div className="my-3 selectContainer">
-                    <select id="colorSelect" value={selectedColor} onChange={handleColorChange}>
-                        <option value="">Select Color</option>
+                    <select id="colorSelect"className=''  value={selectedColor} onChange={handleColorChange}>
+                        <option value=""  className={styles.selection}>Select Color</option>
                         <option>Red</option>
                         <option>Black</option>
                         <option>Blue</option>
                     </select>
                 </div>
                 <div className="my-3 selectContainer">
-                    <select id="quantitySelect" value={selectedQuantity} onChange={handleQuantityChange}>
-                        <option value="">Select Quantity</option>
+                    <select id="quantitySelect" className='' value={selectedQuantity} onChange={handleQuantityChange}>
+                        <option value="" className={styles.selection}>Select Quantity</option>
                         {/* Replace with actual quantity options based on your product data */}
                         <option>1</option>
                         <option>2</option>
@@ -141,11 +150,27 @@ const ProductDetails = () => {
                 </div>
                 <div className="my-3 d-flex flex-column">
                     <button className={`${styles.btnProductDetails} d-flex align-items-center justify-content-between ${showDetails ? 'active' : ''} w-100  text-start p-4 border-left-0`} onClick={toggleDetails} aria-expanded={showDetails} aria-controls="productDetailsCollapse">
-                        <span>{showDetails ? 'Hide Product Details' : 'Show Product Details'}</span>
+                        <span className={styles.detaills}>{showDetails ? 'Product Details' : 'Product Details'}</span>
                         <i className={`fas fa-arrow-${showDetails ? 'up' : 'down'}`}></i>
                     </button>
                     <div className={`collapse ${showDetails ? 'show' : ''}`} id="productDetailsCollapse">
-                        <div className="card card-body">
+                        <div className={`${styles.specificDetail} card card-body`}>
+                            {/* Replace with actual product details */}
+                            <p>{product.description}</p>
+                            <p><strong>Sold:</strong> {product.sold}</p>
+                            <p><strong>Average Rating:</strong> {product.ratingsAverage} ({product.ratingsQuantity} reviews)</p>
+                            {/* Add more product details as needed */}
+                        </div>
+                    </div>
+                </div>
+
+                <div className="my-3 d-flex flex-column">
+                    <button className={`${styles.btnProductDetails} d-flex align-items-center justify-content-between ${size ? 'active' : ''} w-100  text-start p-4 border-left-0`} onClick={toggleSize} aria-expanded={size} aria-controls="productDetailsCollapse">
+                        <span ame={styles.detaills}>{size ? 'Size & Fit' : 'Size & Fit'}</span>
+                        <i className={`fas fa-arrow-${size ? 'up' : 'down'}`}></i>
+                    </button>
+                    <div className={`collapse ${size ? 'show' : ''}`} id="productDetailsCollapse">
+                        <div className={`${styles.specificDetail} card card-body`}>
                             {/* Replace with actual product details */}
                             <p>{product.description}</p>
                             <p><strong>Sold:</strong> {product.sold}</p>

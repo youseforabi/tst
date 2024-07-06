@@ -140,7 +140,7 @@ export default function Footer() {
 
             {/* Footer */}
             <div className={`${styles.foot} d-flex flex-column align-items-center justify-content-center`}>
-                <p className="mt-2 pt-1"> <span>&copy;</span> 2024 BANTAYGA</p>
+                <p className={`${styles.banagia} mt-2 pt-1`}> <span>&copy;</span> 2024 BANTAYGA</p>
                 <p>Powered by <Link to="https://webbing-agency.com/" className={styles.webbing}>Webbing Agency</Link></p>
             </div>
         </>

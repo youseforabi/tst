@@ -1,5 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
+.theBackGround {
+    width: 100%;
+    height: 100vh; /* Set height to 75% of the viewport height */
+    background-image: url('https://s3-alpha-sig.figma.com/img/f826/d1b6/ac2c0abfc3631949cab9dca01b5aafc4?Expires=1721001600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=klhyy5-LK-yPZ67ZqHaMJpcPPtR3Do9Y1-N73ol6XaTF4Mkj-LQDY0kGG4yLIU44P-uovc3ZZJniXbZDE-pV36JMPjStf8NlpYbIFYks-OiHnsWuNCsqUTixWmNIqrTkHNUcikdf-szN8kxRThyTZPwZ1VVyyik~RamI2L~2HkURYtJs9b4YMOYFUe6JQY5WGgNVYxL-zFF-SavCt-2DS8lLSzj3Ly0MVkh-Y0kG-1zOBJteNWU~3myPoDlzVkgCsB34dxR45X4zNMEkZ4oT9E4t9wocp7vx79pfjfqnwHmfV6CRTLCqFTfh17KyCZbE4-hfHTzE09FoNCgjBVeBuQ__');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden; /* Prevent overflow of child elements */
+  }
+  
+  .layer2 {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to top, rgba(24, 24, 24, 0), rgba(24, 24, 24, 0.949));
+    display: flex;
+    align-items: center;
+  }
+  .results{
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
 
+  }
+  
 /* General styles */
 .dropBTN {
     color: black !important;
@@ -130,4 +156,14 @@ span {
     }
 
     
+}
+
+
+@media (max-width: 768px) {
+    .theBackGround {
+      height: 100vh; /* Set height to 100% of the viewport height */
+      background-position: center center; /* Center the background image */
+      background-size: cover; /* Ensure the image covers the entire container */
+    }
+
 }

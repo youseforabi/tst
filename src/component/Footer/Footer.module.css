@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 .rowFooter {
     background-color: rgba(220, 220, 220, 1) !important;
     display: flex;
@@ -10,9 +13,25 @@ a {
 h3,
 a,
 span {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', sans-serif;
+}
+.arrowIcon{
+    font: 2px;
+}
+h3{
+    font-weight: 300 !important;
+    font-size: 17px !important;
 }
 
+a,
+ .arrowIcon{
+    font-size: 15px !important ; 
+    font-weight: 300;
+} 
+.banagia,span{
+    font-size: 12px !important ; 
+    font-weight: 400 !important;
+}
 .foot {
     background-color: rgba(220, 220, 220, 1) !important;
     padding: 10px 0; /* Increase padding for height */
@@ -36,13 +55,13 @@ span {
 
 .webbing{
     transition: all 0.5s;
-    cursor: pointer;
+    cursor: pointer !important;
     text-decoration: none;
     color: black;
 }
 
 .webbing:hover{
-    color: blue;
+    color: blue !important;
 }
 @media (min-width: 900px) {
     .rowFooter {

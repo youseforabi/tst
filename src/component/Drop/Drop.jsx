@@ -11,7 +11,7 @@ import Drawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
 import TuneIcon from '@mui/icons-material/Tune';
 import Pagination from '@mui/material/Pagination';
-import { PaginationItem } from '@mui/material';
+import { PaginationItem, styled } from '@mui/material';
 
 export default function Drop() {
     const [products, setProducts] = useState([]);
@@ -55,6 +55,16 @@ export default function Drop() {
 
         setDeviceType(getDeviceType());
     }, []);
+
+    const CustomPaginationItem = styled(PaginationItem)(({ theme }) => ({
+        borderRadius: '0px', // Makes circles square
+        border: '1px solid black', // Black border for all items
+        '&.Mui-selected': {
+          backgroundColor: 'black', // Background color for selected page
+          color: 'white', // Text color for selected page
+          border: '1px solid black', // Black border for selected item
+        },
+      }));
 
     // Handle pagination change
     const handleChange = (event, value) => {
@@ -227,9 +237,9 @@ export default function Drop() {
 
     // Custom style for Pagination item
     const paginationItemStyle = (pageNumber) => ({
-        border: pageNumber === currentPage ? '1px solid black' : 'none',
-        borderRadius: '50%',
-        padding: '5px',
+        border: pageNumber === currentPage ? '1px solid black' : '3px solid black',
+        borderRadius: '0px',
+        padding: '0px',
         margin: '0 1px',
     });
 
@@ -239,121 +249,129 @@ export default function Drop() {
     };
 
     return (
-        <div className="my-5 mx-3">
+        <>
+            <div className={`${Styles.theBackGround} d-flex flex-column justify-content-center`}>
+                <div className={Styles.layer2}></div>
+            </div>
 
-            {/* Results count and view options */}
-            <div className="mt-5 d-flex justify-content-between align-items-center pt-4">
-                <p>{products.length} results</p>
-                <div className="d-flex justify-content-center align-items-center pb-2">
+            <div className="mb-5 mx-3">
 
-                    <Button
-                        id="demo-positioned-button-drop"
-                        className={Styles.viewBTN}
-                        aria-controls={anchorElDrop ? 'demo-positioned-menu-drop' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={Boolean(anchorElDrop)}
-                        onClick={handleClickDrop}
-                    >
-                        Drop
+                {/* Results count and view options */}
+                <div className="mt-2 d-flex justify-content-between align-items-center">
+                    <p className={Styles.results}>{products.length} results</p>
+                    <div className="d-flex justify-content-center align-items-center pb-2">
+
+                        <Button
+                            id="demo-positioned-button-drop"
+                            className={Styles.viewBTN}
+                            aria-controls={anchorElDrop ? 'demo-positioned-menu-drop' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={Boolean(anchorElDrop)}
+                            onClick={handleClickDrop}
+                        >
+                            Drop
+                        </Button>
+                        <Menu
+                            id="demo-positioned-menu-drop"
+                            anchorEl={anchorElDrop}
+                            open={Boolean(anchorElDrop)}
+                            onClose={handleCloseDrop}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                        >
+                            <MenuItem onClick={() => handleDropSelect()}>999</MenuItem>
+                            <MenuItem onClick={() => handleDropSelect()}>999</MenuItem>
+                            <MenuItem onClick={() => handleDropSelect()}>999</MenuItem>
+
+                        </Menu>
+
+                        <Button
+                            id="demo-positioned-button-view"
+                            className={Styles.viewBTN}
+                            aria-controls={anchorElView ? 'demo-positioned-menu-view' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={Boolean(anchorElView)}
+                            onClick={handleClickView}
+                        >
+                            View {viewIcon}
+                        </Button>
+                        <Menu
+                            id="demo-positioned-menu-view"
+                            anchorEl={anchorElView}
+                            open={Boolean(anchorElView)}
+                            onClose={handleCloseView}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                            }}
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'left',
+                            }}
+                        >
+                            <MenuItem onClick={() => handleViewChange(4, <ViewModuleIcon />)}>View <ViewModuleIcon /></MenuItem>
+                            <MenuItem onClick={() => handleViewChange(6, <WindowIcon />)}>View <WindowIcon /></MenuItem>
+                        </Menu>
+
+                    </div>
+                </div>
+
+                {/* Product grid */}
+                <div className="row">
+                    {products.map((item) => (
+                        <div
+                            key={item._id}
+                            className={`col-${deviceType === 'Desktop' ? columnSize : 12} border border-1 border-black`}
+                            onClick={() => handleProductClick(item._id)}
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <img src={item.imageCover} className="w-100" alt="" />
+                            <br />
+                            <span className="text-black d-flex justify-content-center pb-5 pt-2 fw-bolder">Leather Jacket</span>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Filter button */}
+                <div className={`${Styles.stickyFilterBtn} d-flex justify-content-center py-5`}>
+                    <Button onClick={toggleDrawer(true)} variant="contained" className={`${Styles.filterBtn} ps-3 py-2`}>
+                        Filters <TuneIcon />
                     </Button>
-                    <Menu
-                        id="demo-positioned-menu-drop"
-                        anchorEl={anchorElDrop}
-                        open={Boolean(anchorElDrop)}
-                        onClose={handleCloseDrop}
-                        anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'left',
-                        }}
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
-                        }}
-                    >
-                        <MenuItem onClick={() => handleDropSelect()}>999</MenuItem>
-                        <MenuItem onClick={() => handleDropSelect()}>999</MenuItem>
-                        <MenuItem onClick={() => handleDropSelect()}>999</MenuItem>
+                </div>
 
-                    </Menu>
+                {/* Drawer for filters */}
+                <Drawer
+                    anchor="right"
+                    open={drawerOpen}
+                    onClose={toggleDrawer(false)}
+                    sx={{ width: '40%' }}
+                >
+                    {drawerList()}
+                </Drawer>
 
-                    <Button
-                        id="demo-positioned-button-view"
-                        className={Styles.viewBTN}
-                        aria-controls={anchorElView ? 'demo-positioned-menu-view' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={Boolean(anchorElView)}
-                        onClick={handleClickView}
-                    >
-                        View {viewIcon}
-                    </Button>
-                    <Menu
-                        id="demo-positioned-menu-view"
-                        anchorEl={anchorElView}
-                        open={Boolean(anchorElView)}
-                        onClose={handleCloseView}
-                        anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'left',
-                        }}
-                        transformOrigin={{
-                            vertical: 'top',
-                            horizontal: 'left',
-                        }}
-                    >
-                        <MenuItem onClick={() => handleViewChange(4, <ViewModuleIcon />)}>View <ViewModuleIcon /></MenuItem>
-                        <MenuItem onClick={() => handleViewChange(6, <WindowIcon />)}>View <WindowIcon /></MenuItem>
-                    </Menu>
-
+                {/* Pagination */}
+                <div className="d-flex justify-content-center mt-3">
+                    <Pagination
+                        count={6}
+                        page={currentPage}
+                        onChange={handleChange}
+                        renderItem={(item) => (
+                            <CustomPaginationItem
+                                {...item}
+                                style={{
+                                    ...paginationItemStyle(item.page), // Optional custom styles for other pages
+                                }}
+                            />
+                        )}
+                    />
                 </div>
             </div>
-
-            {/* Product grid */}
-            <div className="row">
-                {products.map((item) => (
-                    <div
-                        key={item._id}
-                        className={`col-${deviceType === 'Desktop' ? columnSize : 12} border border-1 border-black`}
-                        onClick={() => handleProductClick(item._id)}
-                        style={{ cursor: 'pointer' }}
-                    >
-                        <img src={item.imageCover} className="w-100" alt="" />
-                        <br />
-                        <span className="text-black d-flex justify-content-center pb-5 pt-2 fw-bolder">Leather Jacket</span>
-                    </div>
-                ))}
-            </div>
-
-            {/* Filter button */}
-            <div className={`${Styles.stickyFilterBtn} d-flex justify-content-center py-5`}>
-                <Button onClick={toggleDrawer(true)} variant="contained" className={`${Styles.filterBtn} ps-3 py-2`}>
-                    Filters <TuneIcon />
-                </Button>
-            </div>
-
-            {/* Drawer for filters */}
-            <Drawer
-                anchor="right"
-                open={drawerOpen}
-                onClose={toggleDrawer(false)}
-                sx={{ width: '40%' }}
-            >
-                {drawerList()}
-            </Drawer>
-
-            {/* Pagination */}
-            <div className="d-flex justify-content-center">
-                <Pagination
-                    count={10}
-                    page={currentPage}
-                    onChange={handleChange}
-                    renderItem={(item) => (
-                        <PaginationItem
-                            {...item}
-                            style={paginationItemStyle(item.page)}
-                        />
-                    )}
-                />
-            </div>
-        </div>
+        </>
     );
 }
