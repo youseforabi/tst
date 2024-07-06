@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './Footer.module.css'; // Import the CSS module
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
     const [showDetails, setShowDetails] = useState({}); // State to toggle details for each section
@@ -138,8 +139,9 @@ export default function Footer() {
             </div>
 
             {/* Footer */}
-            <div className={`${styles.foot} d-flex align-items-center justify-content-center`}>
+            <div className={`${styles.foot} d-flex flex-column align-items-center justify-content-center`}>
                 <p className="mt-2 pt-1"> <span>&copy;</span> 2024 BANTAYGA</p>
+                <p>Powered by <Link to="https://webbing-agency.com/" className={styles.webbing}>Webbing Agency</Link></p>
             </div>
         </>
     );

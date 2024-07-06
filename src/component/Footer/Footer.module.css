@@ -33,6 +33,17 @@ span {
 .arrowIcon{
     padding-right: 10px;
 }
+
+.webbing{
+    transition: all 0.5s;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+
+.webbing:hover{
+    color: blue;
+}
 @media (min-width: 900px) {
     .rowFooter {
         height: 300px;
