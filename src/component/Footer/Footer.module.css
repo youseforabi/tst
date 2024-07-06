@@ -1,5 +1,6 @@
 .rowFooter {
     background-color: rgba(220, 220, 220, 1) !important;
+    display: flex;
 }
 
 a {
@@ -44,6 +45,8 @@ span {
 @media (max-width: 768px) {
     
     .rowFooter {
+        flex-direction: column;
+        
         margin: auto;
     }
 }

@@ -51,7 +51,7 @@ export default function Footer() {
 
     return (
         <>
-            <div className={`${styles.rowFooter} row`}>
+            <div className={`${styles.rowFooter} `}>
             <div className="col-md-1 border border-1 border-black"></div>
 
                 {/* NEWSLETTER */}
