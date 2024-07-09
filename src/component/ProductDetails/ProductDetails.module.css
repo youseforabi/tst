@@ -109,8 +109,14 @@
     .productDetailsContainer {
         height: auto;
         flex-direction: column; /* Arrange side by side on larger screens */
+        padding: 0;
     }
-
+    .imagesContainer {
+        padding: 20px 20px 0
+    }
+    .detailsContainer {
+        padding: 0;
+    }
     .imagesContainer {
         width: 100%;
         margin: auto;
@@ -125,7 +131,7 @@
     }
     .detail{
         border-top: 1px solid black;
-
+        margin-top: 0 !important;
     }
    
 

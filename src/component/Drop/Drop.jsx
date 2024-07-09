@@ -17,15 +17,15 @@ export default function Drop() {
     const [products, setProducts] = useState([]);
     const [anchorElView, setAnchorElView] = useState(null);
     const [anchorElDrop, setAnchorElDrop] = useState(null);
+    const [grid, setGrid] = useState(1);
     const [columnSize, setColumnSize] = useState(4); // Default to 3 columns on desktop
-    const [viewIcon, setViewIcon] = useState(<ViewModuleIcon />);
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [colorInputs, setColorInputs] = useState(Array.from({ length: 8 }).fill(''));
     const [currentPage, setCurrentPage] = useState(1);
     const [deviceType, setDeviceType] = useState('');
 
     const navigate = useNavigate();
-
+    
     // Fetch products from API
     async function fetchProducts() {
         try {
@@ -54,6 +54,7 @@ export default function Drop() {
         };
 
         setDeviceType(getDeviceType());
+
     }, []);
 
     const CustomPaginationItem = styled(PaginationItem)(({ theme }) => ({
@@ -69,13 +70,6 @@ export default function Drop() {
     // Handle pagination change
     const handleChange = (event, value) => {
         setCurrentPage(value);
-    };
-
-    // Handle view change (columns and icon)
-    const handleViewChange = (size, icon) => {
-        setColumnSize(size);
-        setViewIcon(icon);
-        handleCloseView();
     };
 
     // Handle color input change
@@ -230,6 +224,12 @@ export default function Drop() {
         setAnchorElView(event.currentTarget);
     };
 
+    // Handle click to open view menu
+    const toggleGrid = () => {
+        setGrid(!grid)
+        setColumnSize(columnSize == 6 ? 4 : 6)
+    };
+
     // Handle click to open drop menu
     const handleClickDrop = (event) => {
         setAnchorElDrop(event.currentTarget);
@@ -294,31 +294,27 @@ export default function Drop() {
                         <Button
                             id="demo-positioned-button-view"
                             className={Styles.viewBTN}
-                            aria-controls={anchorElView ? 'demo-positioned-menu-view' : undefined}
-                            aria-haspopup="true"
-                            aria-expanded={Boolean(anchorElView)}
-                            onClick={handleClickView}
+                            onClick={() => toggleGrid()}
                         >
-                            View {viewIcon}
+                            View 
+                            {
+                                grid ? (
+                                    <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="0.5" y="0.5" width="26" height="26" stroke="black"/>
+                                    <rect x="0.5" y="0.5" width="12.9655" height="12.9655" stroke="black"/>
+                                    <rect x="0.5" y="13.5344" width="12.9655" height="12.9655" stroke="black"/>
+                                    <rect x="13.5352" y="13.5344" width="12.9655" height="12.9655" stroke="black"/>
+                                    </svg>
+                                )
+                                :
+                                (
+                                    <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="0.5" y="0.5" width="26" height="26" stroke="black"/>
+                                    <line x1="13.5342" y1="0.931152" x2="13.5342" y2="27.0001" stroke="black"/>
+                                    </svg>
+                                )
+                            }
                         </Button>
-                        <Menu
-                            id="demo-positioned-menu-view"
-                            anchorEl={anchorElView}
-                            open={Boolean(anchorElView)}
-                            onClose={handleCloseView}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                        >
-                            <MenuItem onClick={() => handleViewChange(4, <ViewModuleIcon />)}>View <ViewModuleIcon /></MenuItem>
-                            <MenuItem onClick={() => handleViewChange(6, <WindowIcon />)}>View <WindowIcon /></MenuItem>
-                        </Menu>
-
                     </div>
                 </div>
 
@@ -327,7 +323,7 @@ export default function Drop() {
                     {products.map((item) => (
                         <div
                             key={item._id}
-                            className={`col-${deviceType === 'Desktop' ? columnSize : 12} border border-1 border-black`}
+                            className={`col-${deviceType === 'Desktop' ? columnSize : columnSize == 4 ? 6 : 12} border border-1 border-black`}
                             onClick={() => handleProductClick(item._id)}
                             style={{ cursor: 'pointer' }}
                         >

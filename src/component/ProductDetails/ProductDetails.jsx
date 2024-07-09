@@ -3,6 +3,14 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Slider from 'react-slick';
 import styles from './ProductDetails.module.css'; // Assuming you have custom styles for buttons and other elements
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+// import required modules
+import { Pagination } from 'swiper/modules';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -61,13 +69,13 @@ const ProductDetails = () => {
         };
 
         return (
-            <Slider {...settings} className={styles.slider}>
+            <Swiper pagination={true} modules={[Pagination]} className="productSwiper">
                 {product.images.map((image, index) => (
-                    <div key={index}>
-                        <img src={image} alt={`Product image ${index + 1}`} className={styles.productImage} />
-                    </div>
+                    <SwiperSlide key={index}>
+                        <img src={image} alt={`Product image ${index + 1}`} />
+                    </SwiperSlide>
                 ))}
-            </Slider>
+            </Swiper>
         );
     };
 
@@ -100,7 +108,7 @@ const ProductDetails = () => {
     }
 
     return (
-        <div className={`${styles.productDetailsContainer}`}>
+        <div className={`${styles.productDetailsContainer} product_details_wrapper`}>
             <div className={styles.imagesContainer}>
                 {/* Heart icon */}
                 <Link to={'/wishlist'} className="fa-regular fa-heart fs-3 text-decoration-none text-black"></Link>
@@ -108,7 +116,7 @@ const ProductDetails = () => {
                 {deviceType === 'Desktop' ? renderImagesAsList() : renderImagesAsSlider()}
             </div>
             <div className={styles.detailsContainer}>
-                <div className={`${styles.detail} d-flex justify-content-between align-items-center mt-3 mb-4`}>
+                <div className={`${styles.detail} detail_1 d-flex justify-content-between align-items-center mt-3 mb-4`}>
                     <h1 className='pt-4'>{product.title.split(' ').slice(0, 3).join(' ')}</h1>
                     <p>${product.price}</p>
 

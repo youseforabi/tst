@@ -37,6 +37,15 @@
     color: black !important;
     border: 1px solid black !important;
     margin-left: 5px !important;
+    display: flex;
+    border-radius: 0 !important;
+    align-items: center;
+    gap: 4px;
+}
+
+.viewBTN svg {
+    width: 22px;
+    height: 22px;
 }
 
 .product {
